@@ -470,14 +470,14 @@ fun readNumber(reader: BufferedReader): Int?{
 
 import java.io.BufferedReader
 
-fun readNumber(read: BufferedReader){
+fun readNumber(read: BufferedReader) {
     val number = try {
         Integer.parseInt(read.readLine())
-    } catch (e: NumberFormatException){
-    return null
-  } finally {
-    reader.close()
-  }
+    } catch (e: NumberFormatException) {
+        return
+    } finally {
+        reader.close()
+    }
 }
 ```
 - if, when과 마찬가지로 변수에 대입하여 사용할 수 있다.
@@ -489,13 +489,13 @@ fun readNumber(read: BufferedReader){
 import java.io.BufferedReader
 
 fun readNumber(reader: BufferedReader) {
-    val number = try {
-        Integer.parseInt(read.readLine())
-    } catch (e: NumberFormatException) {
-        return null
-    } finally {
-        reader.close()
-    }
-    return number
+  val number = try {
+    Integer.parseInt(read.readLine())
+  } catch (e: NumberFormatException) {
+    null // 예외가 발생하면 null 값을 사용한다.
+  } finally {
+    reader.close()
+  }
+  return number
 }
 ```
