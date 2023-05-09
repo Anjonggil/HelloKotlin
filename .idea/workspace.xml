@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eea0832-9371-4650-af9f-f028ad03300c" name="Changes" comment="">
+    <list default="true" id="1eea0832-9371-4650-af9f-f028ad03300c" name="Changes" comment="2장 코틀린 기초&#10;&#10;- 찐막">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter3/Main.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter3/chapter3.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/part1/chapter2/chapter2.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter2/chapter2.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,10 +77,47 @@
       <updated>1683530807740</updated>
       <workItem from="1683530808756" duration="8205000" />
       <workItem from="1683587010996" duration="3122000" />
+      <workItem from="1683608539631" duration="12949000" />
     </task>
+    <task id="LOCAL-00001" summary="2장 코틀린 기초&#10;&#10;- 2.3 시작 전">
+      <created>1683593717023</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683593717023</updated>
+    </task>
+    <task id="LOCAL-00002" summary="2장 코틀린 기초&#10;&#10;- 마무리">
+      <created>1683613387628</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683613387628</updated>
+    </task>
+    <task id="LOCAL-00003" summary="2장 코틀린 기초&#10;&#10;- 목차 추가">
+      <created>1683613483853</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683613483853</updated>
+    </task>
+    <task id="LOCAL-00004" summary="2장 코틀린 기초&#10;&#10;- 찐막">
+      <created>1683613580955</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683613580955</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2장 코틀린 기초&#10;&#10;- 2.3 시작 전" />
+    <MESSAGE value="2장 코틀린 기초&#10;&#10;- 마무리" />
+    <MESSAGE value="2장 코틀린 기초&#10;&#10;- 목차 추가" />
+    <MESSAGE value="2장 코틀린 기초&#10;&#10;- 찐막" />
+    <option name="LAST_COMMIT_MESSAGE" value="2장 코틀린 기초&#10;&#10;- 찐막" />
   </component>
 </project>
