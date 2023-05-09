@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eea0832-9371-4650-af9f-f028ad03300c" name="Changes" comment="2장 코틀린 기초&#10;&#10;- 찐막">
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter3/Main.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter3/chapter3.md" afterDir="false" />
+    <list default="true" id="1eea0832-9371-4650-af9f-f028ad03300c" name="Changes" comment="2장&#10;- 표현 처리">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter4/chapter4.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,6 +111,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="2장 코틀린 기초&#10;&#10;- 2.3 시작 전" />
