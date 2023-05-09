@@ -298,3 +298,202 @@ fun eval(e: Expr) :Int{
 - is를 사용해 변수 타입을 검사한다. 
 - java의 instanceof와 비슷화지만 코틀에서는 컴파일러가 자동으로 캐스팅한다.
 - 이를 **스마트 캐스트**라 한다.
+
+
+### 2.3.6 리팩토링 : if to when
+
+```kotlin
+interface Expr
+class Num(val value: Int) : Expr
+class Sum(val left:Expr, val right:Expr) :Expr
+
+fun eval(e: Expr): Int =
+  when (e) {
+    is Num -> e.value
+    is Sum ->
+      eval(e.right) + eval(e.left)
+    else ->
+      throw IllegalArgumentException("Unknown expression")
+  }
+```
+
+### 2.3.7 if와 when의 분기에서 블럭 사용
+```kotlin
+interface Expr
+class Num(val value: Int) : Expr
+class Sum(val left:Expr, val right:Expr) :Expr
+
+fun evalWithLogging(e: Expr) :Int{
+  when (e) {
+    is Num -> {
+        println("num: $e.value")
+        e.value
+    }
+    is Sum ->{
+      val right = evalWithLogging(e.right)
+      val left = evalWithLogging(e.left)
+      println("sum: $left + $right")
+      left + right
+    }
+    else ->
+      throw IllegalArgumentException("Unknown expression")
+  }
+}
+```
+
+## 2.4 대상을 이터레이션: while, for
+### 2.4.1 while 루프
+```kotlin
+while(조건){
+    //조건이 참인 동안 본문을 반복 실행 한다.
+}
+
+do{
+    //맨 처음에 무조건 본문을 한 번 실행한 다음, 조건이 참인 동안 본문을 반복 실행한다.
+}while (조건)
+```
+
+### 2.4.2 수에 대한 이터레이션 : 범위와 수열
+```kotlin
+fun fizzBuzz(i:Int) = when{
+    i % 15 == 0 -> "FizzBuzz"
+    i % 3 == 0 -> "Fizz"
+    i % 5 == 0 -> "Buzz"
+    else -> "$i "
+}
+
+fun main(){
+  for (i in 1..100){
+    println(fizzBuzz(i))
+  }
+}
+```
+- 초깃값, 증가 값, 최종 값을 사용한 루프를 대신하기 위해 범위(**Range**)를 사용한다.
+
+```kotlin
+for (i in 100 downTo 1 step 2){
+    println(fizzBuzz(i))
+}
+```
+- .. 항상 끝값을 표시
+- 끝 값을 포함하지 않는 반만 닫힌 범위에 대해 이터레이션할 때 until을 사용
+- ex) x in 0 until size
+
+### 2.4.3 맵에 대한 이터레이션
+```kotlin
+
+import java.util.TreeMap
+
+val binaryReps = TreeMap<Char, String>() // 키에 대한 정렬하기 위해 TreeMap을 사용한다.
+for (c in 'A'..'F') { // A 부터 F까지 문자의 범위를 사용해 이터레이션 한다.
+    val binary = Integer.toBinaryString(c.toInt()) // 아스키 코드 2진 표현으로 바꾼다.
+    binaryReps[c] = binary // c를 키로 c의 2진 표현을 맵에 넣는다.
+}
+
+for ((letter,binary) in binaryReps){ // 맵에 대해 이터레이션한다. 맵의 키와 값을 두 변수에 각각 대입한다.
+    println("$letter = $binary")
+}
+```
+
+```kotlin
+val list = arrayListOf("10","11","1001")
+for((index, element) in list.withIndex()){//인덱스와 함께 컬렉션을 이터레이션한다.
+    println("$index: $element")
+}
+```
+
+### 2.4.4 in 으로 컬렉션이나 범위의 원소 검사
+```kotlin
+fun isLetter(c: Char) = c in 'a'..'z' || c in 'A'..'Z'
+fun isNotDigit(c: Char) = c !in '0'..'9'
+```
+- 코드는 깔끔해 보일 수 있음
+- 다만 범위 클래스 안에 감춰져 있음
+```kotlin
+// c in 'a'..'z'
+fun recognize(c: Char) = when(c){
+    in '0' .. '9' -> "It's a digit!"
+    in 'a'..'z', in 'A'..'Z' -> "It's a letter!"
+    else -> "I don't know"
+}
+```
+
+- 범위는 문자에만 국한 되지 않음
+- 비교 가능한 클래스라면 인스턴스 객체를 사용해 범위를 만들 수 있다.
+- Comparable을 사용하는 범위의 경우 그 범위 내의 모든 객체를 항상 이터레이하지는 못한다.
+- ex) println("Kotlin" in "Java".."Scala") // true
+- ex) println("Kotlin" in setOf("Java","Scala")) //false <- 이 집합에는 Kotlin이 포함되지 않았다.
+
+## 2.5 코틀린의 예외 처리
+```kotlin
+if (percentage !in 0..100) {
+  throw IllegalArgumentException()
+}
+```
+- 다른 클래스와 마찬가지로 new 키워드 생략가능
+- throw는 식임으로 다른 식에 표현이 가능
+
+```kotlin
+val percentage = 
+    if (number in 0..100)
+        number
+    else 
+        throw IllegalArgumentException()
+```
+
+2.5.1 try,catch,finally
+```kotlin
+
+import java.io.BufferedReader
+
+fun readNumber(reader: BufferedReader): Int?{
+    try {
+        val line = reader.readLine()
+      return Integer.parseInt(line)
+    }
+    catch (e: NumberFormatException){
+        return null
+    } finally {
+        reader.close()
+    }
+}
+```
+- throws 절이 코드에 없다.
+- 체크 예외이기 때문이다.
+- checked Exception의 경우 명시적으로 처리가 피룡한데 catch를 통해 처리하면됨
+
+### 2.5.2 try를 식으로 사용
+
+```kotlin
+
+import java.io.BufferedReader
+
+fun readNumber(read: BufferedReader){
+    val number = try {
+        Integer.parseInt(read.readLine())
+    } catch (e: NumberFormatException){
+    return null
+  } finally {
+    reader.close()
+  }
+}
+```
+- if, when과 마찬가지로 변수에 대입하여 사용할 수 있다.
+- if 달리 중괄호로 둘러싸야 한다.
+- 식의 마지막이 리턴값
+
+```kotlin
+
+import java.io.BufferedReader
+
+fun readNumber(reader: BufferedReader) {
+    val number = try {
+        Integer.parseInt(read.readLine())
+    } catch (e: NumberFormatException) {
+        return null
+    } finally {
+        reader.close()
+    }
+    return number
+}
+```
