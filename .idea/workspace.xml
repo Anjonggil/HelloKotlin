@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1eea0832-9371-4650-af9f-f028ad03300c" name="Changes" comment="2장&#10;- 표현 처리">
+    <list default="true" id="1eea0832-9371-4650-af9f-f028ad03300c" name="Changes" comment="4장&#10;&#10;- 클래스, 인터페이스">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/part1/chapter4/chapter4.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter4/chapter4.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +77,7 @@
       <workItem from="1683530808756" duration="8205000" />
       <workItem from="1683587010996" duration="3122000" />
       <workItem from="1683608539631" duration="12949000" />
-      <workItem from="1683761711509" duration="1020000" />
+      <workItem from="1683761711509" duration="2172000" />
     </task>
     <task id="LOCAL-00001" summary="2장 코틀린 기초&#10;&#10;- 2.3 시작 전">
       <created>1683593717023</created>
@@ -106,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683613580955</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="4장&#10;&#10;- 클래스, 인터페이스">
+      <created>1683762899071</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683762899072</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +136,7 @@
     <MESSAGE value="2장 코틀린 기초&#10;&#10;- 마무리" />
     <MESSAGE value="2장 코틀린 기초&#10;&#10;- 목차 추가" />
     <MESSAGE value="2장 코틀린 기초&#10;&#10;- 찐막" />
-    <option name="LAST_COMMIT_MESSAGE" value="2장 코틀린 기초&#10;&#10;- 찐막" />
+    <MESSAGE value="4장&#10;&#10;- 클래스, 인터페이스" />
+    <option name="LAST_COMMIT_MESSAGE" value="4장&#10;&#10;- 클래스, 인터페이스" />
   </component>
 </project>

@@ -71,3 +71,33 @@ open class RichButton : Clickable {
     override fun click() {}
 }
 ```
+
+```kotlin
+interface Clickable {
+    fun click()
+    fun showOff() = println("I'm Clickable")
+}
+//오버라이드 금지
+open class RichButton : Clickable{
+    final override fun click()
+}
+```
+```kotlin
+abstract class Animated{ //이 클래스는 추상클래스다. 이 클래스의 인스턴스를 만ㄷ들 수 없다.
+    abstract fun animate() // 이 함수는 추상함수다. 이 함수에는 구현이 없다. 하위 클래스에서는 이 함수를 반드시 오버라이드해야 한다..
+    
+    open fun stopAnimating(){ 
+    //추상 클래스에 속했더라도 비추상 함수는 기본적으로 파이널이지만 원한다면 open으로 오버라이드를 허용할 수 있다.
+    }
+    
+    fun  animateTwice(){
+        
+    }
+}
+```
+- 인터페이스의 멤버의 경우 항상 열려있으며 final로 변경할 수 없다.
+- 안터페이스 멤버에게 본문이 없으면 자동으로 추상 멤버가 되지만, 따로 멤버 선언 앞에 abstract 키워드를 덧붙일 필요가 없다.
+
+### 4.1.3 가시성 변경자: 기본적으로 공개
+
+
