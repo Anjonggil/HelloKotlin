@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1eea0832-9371-4650-af9f-f028ad03300c" name="Changes" comment="4장&#10;&#10;- 클래스, 인터페이스">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/part1/chapter1/chapte1.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter1/chapte1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/part1/chapter2/chapter2.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter2/chapter2.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/part1/chapter3/chapter3.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter3/chapter3.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/part1/chapter4/chapter4.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/part1/chapter4/chapter4.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

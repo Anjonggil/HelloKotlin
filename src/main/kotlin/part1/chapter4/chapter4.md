@@ -99,5 +99,78 @@ abstract class Animated{ //이 클래스는 추상클래스다. 이 클래스의
 - 안터페이스 멤버에게 본문이 없으면 자동으로 추상 멤버가 되지만, 따로 멤버 선언 앞에 abstract 키워드를 덧붙일 필요가 없다.
 
 ### 4.1.3 가시성 변경자: 기본적으로 공개
+> visibility modifier는 코드 기반에 있는 선언에 대한 클래스 외부 접근을 제어한다. 
+> 어떤 클래스의 구현에 대한 접근을 제한함으로써 그 클래스에 의존하는 외부 코드를 깨지 않고도 클래스 내부 구현을 변경할 수 있다.
 
+| **변경자**           | **클래스 멤버**              | **최상위 선언**             |
+|---------------|---------------------|--------------------|
+| public(기본가시성) | 모든 곳에서 볼 수 있다.      | 모든 곳에서 볼 수 있다.     |
+| internal      | 같은 모듈 안에서만 볼 수 있다.  | 같은 모듈 안에서만 볼 수 있다. |
+| protected     | 하위 클래스 안에서만 볼 수 있다. | (최상위 선언에 적용할 수 없음) |
+| private       | 같은 클래스 안에서만 볼 수 있다. | 같은 파일안에서만 볼 수 있다.  |
 
+```kotlin
+class Button : View{
+    override fun getCurrentState() : State = ButtonState()
+    override fun restoreState(state:Stete) {}
+    
+    class ButtonState : State {}
+}
+```
+
+| 클래스 B 안에 정의된 클래스 A               | 자바에서는          | 코틀린에서는        |
+|----------------------------------|----------------|---------------|
+| 중첩된 클래스(바깥쪽 클래스에 대한 참조를 저장하지 않음) | static class A | class A       |
+| 내부 클래스(바깥쪽 클래스에 대한 참조를 저장함)      | class A        | inner class A |
+
+```kotlin
+class Outer{
+    inner class Inner{
+        fun getOuterReference() : Outer = this@Outer
+    }
+}
+```
+
+### 4.1.5 봉인된 클래스: 클래스 계층 정의 시  계층 확장 제한
+```kotlin
+interface Expr
+class Num(val value:Int) : Expr
+class Sum(val left:Expr, val right:Expr) : Expr
+
+fun eval(e: Expr):Int = 
+    when(e) {
+        is Num -> e.value
+        is Sum -> eval(e.right) + eval(e.left)
+        else ->
+            throw IllegalArgumentException("~~")
+    }
+```
+> sealed 클래스는 상위 클래스에 sealed 변경자를 붙이면 그 상위 클래스를 상속한 하위 클래스 정의를 제한 할 수 있다.
+> sealed 클래스의 하위 클래스를 정의할 때는 반드시 상위 클래스 안에 중첩시켜야 한다.
+```kotlin
+sealed class Expr{ //기반 클래스를 sealed로 봉인한다.
+    class Num(val value: Int) : Expr() //기반 클래스의 모든 하위 클래스를 중첩클래스로 나열한다.
+    class Sum(val left:Expr, val right:Expr) : Expr()
+}
+
+fun eval(e: Expr):Int =
+    when(e) { //when 식이 모든 하위 클래스를 검사하므로 별도의 else 분기가 없어도 된다.
+        is Num -> e.value
+        is Sum -> eval(e.right) + eval(e.left)
+    }
+```
+
+## 4.2 뻔하지 않은 생성자와 프로퍼티를 갖는 클래스 선언
+
+### 4.2.1 클래스 초기화: 주 생성자와 초기화 블록
+
+```kotlin
+class User(val nickname: String) // 주생성자
+
+class User(_nickname:String){ //파라미터가 하나뿐인 주 생성자
+    val nickname : _nickname //프로퍼티를 주 생성자의 파라미터로 초기화한다.
+}
+
+class User(val nickname: String, //생성자 파라미터에 대한 디폴트 값을 제공한다.
+    val isSubscribed: Boolean = true)
+```
