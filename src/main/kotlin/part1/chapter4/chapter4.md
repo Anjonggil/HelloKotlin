@@ -174,3 +174,81 @@ class User(_nickname:String){ //파라미터가 하나뿐인 주 생성자
 class User(val nickname: String, //생성자 파라미터에 대한 디폴트 값을 제공한다.
     val isSubscribed: Boolean = true)
 ```
+
+### 부 생성자: 상위 클래스를 다른 방식으로 초기화
+
+일반적으로 코틀린에서는 생성자가 여럿 있는 경우가 자바 보다는 적다. 자바에서 오버로드한 생성자가 필요할 경우 
+상당 수는 코틀린의 default 파라미터 값과 이름 붙은 인자 문법을 사용해 해결할 수 있다.
+
+```kotlin
+
+import javax.swing.text.AttributeSet
+
+open class View {
+    constructor(ctx: Context) { // 부생성자
+
+    }
+
+    constructor(ctx: Context, attr: AttributeSet){ // 부생성자
+        
+    }
+}
+
+class MyButton : View {
+    constructor(ctx: Context): super(ctx){ //상위 클래스의 생성자를 호출한다.
+        
+    }
+
+    constructor(ctx: Context, attr: AttributeSet): super(ctx, attr){ //상위 클래스의 생성자를 호출한다.
+
+    }
+}
+```
+
+![img.png](img.png)
+
+```kotlin
+
+import javax.swing.text.AttributeSet
+
+open class View {
+    constructor(ctx: Context) { // 부생성자
+
+    }
+
+    constructor(ctx: Context, attr: AttributeSet){ // 부생성자
+        
+    }
+}
+
+class MyButton : View {
+    constructor(ctx: Context): this(ctx, MY_STYLE){ //이 클래스의 다른 생성자에게 위임한다.
+        
+    }
+
+    constructor(ctx: Context, attr: AttributeSet): super(ctx, attr){
+
+    }
+}
+```
+
+![img_2.png](img_2.png)
+
+### 4.2.3 인터페이스에 선언된 프로퍼티 구현
+
+```kotlin
+interface User{
+    val nickname: String
+}
+
+class PrivateUser(override val nickname: String) : User
+
+class SubscribingUser(val email: String) :User {
+    override val nickname: String
+        get()= email.substringBefore('@')
+    
+class FacebookUser(val accountId: Int): User {
+    override val nickname = getFacebookName(accountId)
+}   
+}
+```
